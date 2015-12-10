@@ -29,8 +29,8 @@ location, change `nginx.conf` and `uwsgi.ini` accordingly.
     ```
 
 - Create a virtualenv with latest `pip`, `setuptools`, and `django` packages,
-for example in `/var/www/djangsite/venv`. Note: if you choose a different location,
-change `uwsgi.ini` accordingly.
+for example in `/var/www/django-uwsgi-nginx/venv`. Note: if you choose a different
+location, change `uwsgi.ini` accordingly.
 
 - Determine the version of Python you are using and edit `uwsgi.ini` accordingly.
 
@@ -39,7 +39,7 @@ file in the `/etc/nginx/conf.d` directory.
 
     ```
     rm /etc/nginx/sites-enabled/default
-    ln -s /var/www/djangosite/conf/nginx.conf /etc/nginx/conf.d/
+    ln -s /var/www/django-uwsgi-nginx/conf/nginx.conf /etc/nginx/conf.d/
     service nginx restart
     ```
 
@@ -47,8 +47,8 @@ file in the `/etc/nginx/conf.d` directory.
 and `/etc/uwsgi/apps-enabled` directories.
 
     ```
-    ln -s /var/www/djangosite/conf/uwsgi.ini /etc/uwsgi/apps-available/
-    ln -s /var/www/djangosite/conf/uwsgi.ini /etc/uwsgi/apps-enabled/
+    ln -s /var/www/django-uwsgi-nginx/conf/uwsgi.ini /etc/uwsgi/apps-available/
+    ln -s /var/www/django-uwsgi-nginx/conf/uwsgi.ini /etc/uwsgi/apps-enabled/
     ```
 
 - Hack the `uwsgi` service to use the so-called emperor, which will automatically
@@ -68,6 +68,6 @@ serve any `.ini` file in `/etc/uwsgi/apps-enabled`.
 user, change `/etc/nginx/nginx.conf`, `uwsgi.ini`, and these commands accordingly.
 
     ```
-    chown -R www-data:www-data /var/www/djangosite/
+    chown -R www-data:www-data /var/www/django-uwsgi-nginx/
     chmod www-data:www-data /var/log/uwsgi/
     ```
