@@ -82,3 +82,8 @@ user, change `/etc/nginx/nginx.conf`, `uwsgi.ini`, and these commands accordingl
     chown -R www-data:www-data /var/www/django-uwsgi-nginx/
     chown www-data:www-data /var/log/uwsgi/
     ```
+- Check it out!
+
+    ```
+    http://<your.ip.add.ress>/helloworld/
+    ```
