@@ -7,41 +7,36 @@ images, etc.).
 Installation steps on Debian 8
 ------------------------------
 
-- Install nginx as system-wide service.
+- Install nginx and uWSGI as system-wide services.
 
     ```
     apt-get update && apt-get upgrade
     apt-get install nginx
-    ```
-
-- Install uWSGI as system-wide service.
-
-    ```
     apt-get install uwsgi
     ```
 
 - `git clone` this repo, for example in `/var/www`. Note: if you choose a different
-location, change `nginx.conf` and `uwsgi.ini` accordingly.
+location, change `nginx.conf` and `uwsgi.ini` accordingly after cloning.
 
     ```
     cd /var/www
     git clone https://github.com/nicodv/django-uwsgi-nginx.git
     ```
 
-- Create a virtualenv with latest `pip`, `setuptools`, and `django` packages,
+- Create a virtualenv with the latest `pip`, `setuptools`, and `django` packages,
 for example in `/var/www/django-uwsgi-nginx/venv`. Note: if you choose a different
 location, change `uwsgi.ini` accordingly.
 
-- Determine the version of Python you are using and edit `uwsgi.ini` accordingly.
-
-- Install the Python plugin to uWSGI.
+- Install the Python plugin to uWSGI. Note: I assume Python 3 here. The Python 2
+command is the same, minus the `3`. Also, if you're using Python 2, edit
+`uwsgi.ini` accordingly by editing the plugin name.
 
     ```
     apt-get install uwsgi-plugin-python3
     ```
 
-- Remove `nginx` default site config and make a symbolic link to the `nginx.conf`
-file in the `/etc/nginx/conf.d` directory.
+- Remove nginx's default site config and make a symbolic link to the
+`nginx.conf` file in the `/etc/nginx/conf.d` directory.
 
     ```
     rm /etc/nginx/sites-enabled/default
@@ -62,7 +57,7 @@ serve any `.ini` file in `/etc/uwsgi/apps-enabled`. Do this by editing
 `/etc/init.d/uwsgi` and adding `--emperor /etc/uwsgi/apps-enabled` after the
 service start command so that it reads
 `"Starting $DESC" "$NAME" --emperor /etc/uwsgi/apps-enabled`). Then reload and
-restart the service.
+restart the service:
 
     ```
     systemctl daemon-reload
@@ -87,3 +82,12 @@ user, change `/etc/nginx/nginx.conf`, `uwsgi.ini`, and these commands accordingl
     ```
     http://<your.ip.add.ress>/helloworld/
     ```
+
+Debugging
+---------
+nginx logs can be found in `/var/log/nginx`, and uWSGI logs in `/var/log/uwsgi`.
+You can also try to run the uWSGI server manually with:
+
+    uwsgi --ini /var/www/django-uwsgi-nginx/conf/uwsgi.ini
+
+Let me know if something did not work for you.
