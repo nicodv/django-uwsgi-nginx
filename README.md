@@ -34,6 +34,12 @@ location, change `uwsgi.ini` accordingly.
 
 - Determine the version of Python you are using and edit `uwsgi.ini` accordingly.
 
+- Install the Python plugin to uWSGI.
+
+    ```
+    apt-get install uwsgi-plugin-python3
+    ```
+
 - Remove `nginx` default site config and make a symbolic link to the `nginx.conf`
 file in the `/etc/nginx/conf.d` directory.
 
@@ -52,9 +58,14 @@ and `/etc/uwsgi/apps-enabled` directories.
     ```
 
 - Hack the `uwsgi` service to use the so-called emperor, which will automatically
-serve any `.ini` file in `/etc/uwsgi/apps-enabled`.
+serve any `.ini` file in `/etc/uwsgi/apps-enabled`. Do this by editing
+`/etc/init.d/uwsgi` and adding `--emperor /etc/uwsgi/apps-enabled` after the
+service start command so that it reads
+`"Starting $DESC" "$NAME" --emperor /etc/uwsgi/apps-enabled`). Then reload and
+restart the service.
 
     ```
+    systemctl daemon-reload
     service uwsgi restart
     ```
 
@@ -69,5 +80,5 @@ user, change `/etc/nginx/nginx.conf`, `uwsgi.ini`, and these commands accordingl
 
     ```
     chown -R www-data:www-data /var/www/django-uwsgi-nginx/
-    chmod www-data:www-data /var/log/uwsgi/
+    chown www-data:www-data /var/log/uwsgi/
     ```
