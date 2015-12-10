@@ -16,13 +16,9 @@ Including another URLconf
 """
 from django.conf.urls import url
 from django.contrib import admin
-from djangosite.helloworldapp import views
-from djangosite.djangosite import settings
+from helloworldapp import views
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'helloworld/$', views.helloworld),
 ]
-
-urlpatterns += (r'^media/(?P<path>.*)$', 'django.views.static.serve',
-                {'document_root': settings.MEDIA_ROOT}),
