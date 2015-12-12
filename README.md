@@ -92,4 +92,6 @@ You can also try to run the uWSGI server manually with:
 
     uwsgi --ini /var/www/django-uwsgi-nginx/conf/uwsgi.ini
 
-Let me know if something did not work for you.
+To do
+-----
+- Enhance security
