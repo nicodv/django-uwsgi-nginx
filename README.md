@@ -4,7 +4,7 @@ Example of a Django site served by uWSGI and nginx for testing and education pur
 Implements a simple "Hello, world!", but with a few extras (templates, CSS, 
 images, etc.).
 
-**This is not suitable for production and should be considered insecure (e.g., the `SECRET_KEY` is currently hardcoded in `settings.py`!).**
+**This example is not suitable for production and should be considered insecure (e.g., the `SECRET_KEY` is currently hardcoded in `settings.py`)!**
 
 Installation steps on Debian 8
 ------------------------------
