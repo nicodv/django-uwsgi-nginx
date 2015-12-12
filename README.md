@@ -1,5 +1,5 @@
 # django-uwsgi-nginx
-Example of a Django site served by uWSGI and nginx.
+Example of a Django site served by uWSGI and nginx for testing and education purposes. This is not suitable for production and should be considered insecure.
 
 Implements a simple "Hello, world!", but with a few extras (templates, CSS, 
 images, etc.).
