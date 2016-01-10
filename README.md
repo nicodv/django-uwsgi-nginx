@@ -96,12 +96,13 @@ user, change `/etc/nginx/nginx.conf`, `uwsgi.ini`, and these commands accordingl
     http://<your.ip.add.ress>/helloworld/
     ```
 
+- This example is set up in such a way that by changing the `DJANGO_SETTINGS_MODULE`
+reference in `uwsgi.ini`, you can easily switch between site settings. You can, 
+for example, choose development server settings by referring to `%(site).settings.dev`.
+
 Debugging
 ---------
 nginx logs can be found in `/var/log/nginx`, and uWSGI logs in `/var/log/uwsgi`. 
 You can also try to run the uWSGI server manually with:
 
     uwsgi --ini /var/www/django-uwsgi-nginx/conf/uwsgi.ini
-
-Try setting `DEBUG = True` in the `settings.py` file for debugging information 
-of your Django site.
