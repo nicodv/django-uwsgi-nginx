@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        {% load static %}
+        <title>Django site</title>
+        <link rel="stylesheet" type="text/css" href="{% block stylesheet %}{% static 'css/helloworld.css' %}{% endblock %}" />
+    </head>
+
+    <body>
+    {% block content %}{% endblock content %}
+    </body>
+</html>
