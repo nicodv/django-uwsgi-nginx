@@ -16,9 +16,9 @@ Including another URLconf
 """
 from django.conf.urls import include, url
 from django.contrib import admin
-from helloworldapp import views
 
 urlpatterns = [
+    url(r'^$', 'index.html'),
     url(r'^admin/', admin.site.urls),
     url(r'^helloworld/', include('helloworld.urls')),
 ]
