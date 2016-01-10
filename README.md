@@ -90,15 +90,17 @@ user, change `/etc/nginx/nginx.conf`, `uwsgi.ini`, and these commands accordingl
     chown -R www-data:www-data /var/www/django-uwsgi-nginx/
     chown www-data:www-data /var/log/uwsgi/
     ```
+- Copy all static folders into the `STATIC_ROOT` directory:
+
+    ```
+    python manage.py collectstatic
+    ```
+
 - Check it out!
 
     ```
     http://<your.ip.add.ress>/helloworld/
     ```
-
-- This example is set up in such a way that by changing the `DJANGO_SETTINGS_MODULE`
-reference in `uwsgi.ini`, you can easily switch between site settings. You can, 
-for example, choose development server settings by referring to `%(site).settings.dev`.
 
 Debugging
 ---------
@@ -106,3 +108,9 @@ nginx logs can be found in `/var/log/nginx`, and uWSGI logs in `/var/log/uwsgi`.
 You can also try to run the uWSGI server manually with:
 
     uwsgi --ini /var/www/django-uwsgi-nginx/conf/uwsgi.ini
+
+Other Notes
+-----------
+- This example is set up in such a way that by changing the `DJANGO_SETTINGS_MODULE` 
+reference in `uwsgi.ini`, you can easily switch between site settings. You can, 
+for example, choose development server settings by referring to `%(site).settings.dev`.
