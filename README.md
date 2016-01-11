@@ -36,7 +36,7 @@ location, change `uwsgi.ini` accordingly.
 the `/etc/profile` file for proper security:
 
     ```
-    export DJANGO_SECRET_KEY=<your long and secret key>
+    export DJANGO_SECRET_KEY="<your long and secret key>"
     export PYTHONHASHSEED=random
     ```
 
