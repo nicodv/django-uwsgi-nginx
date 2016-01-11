@@ -93,7 +93,7 @@ user, change `/etc/nginx/nginx.conf`, `uwsgi.ini`, and these commands accordingl
 - Copy all static folders into the `STATIC_ROOT` directory:
 
     ```
-    python manage.py collectstatic
+    python manage.py collectstatic --settings=djangosite.settings.prod
     ```
 
 - Check it out!
