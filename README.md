@@ -27,18 +27,12 @@ location, change `nginx.conf` and `uwsgi.ini` accordingly after cloning.
     git clone https://github.com/nicodv/django-uwsgi-nginx.git
     ```
 
+- Generate a Django secret key using the supplied script 
+(`python django-uwsgi-nginx/tools/django_secret_keygen.py`), and put it in the `uwsgi.ini` file.
+
 - Create a virtualenv with the latest `pip`, `setuptools`, and `django` packages, 
 for example in `/var/www/django-uwsgi-nginx/venv`. Note: if you choose a different 
 location, change `uwsgi.ini` accordingly.
-
-- Generate a Django secret key using the supplied script 
-(`python django-uwsgi-nginx/tools/django_secret_keygen.py`), and add the following to 
-the `/etc/profile` file for proper security:
-
-    ```
-    export DJANGO_SECRET_KEY="<your long and secret key>"
-    export PYTHONHASHSEED=random
-    ```
 
 - Install the Python plugin to uWSGI. Note: I assume Python 3 here. The Python 2 
 command is the same, minus the `3`. Also, if you're using Python 2, edit 
