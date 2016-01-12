@@ -17,8 +17,10 @@ Including another URLconf
 from django.conf.urls import include, url
 from django.contrib import admin
 
+import helloworldapp
+
 urlpatterns = [
     url(r'^$', 'index.html'),
     url(r'^admin/', admin.site.urls),
-    url(r'^helloworld/', include('helloworld.urls')),
+    url(r'^helloworld/', include('helloworldapp.urls')),
 ]
