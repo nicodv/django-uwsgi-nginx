@@ -2,11 +2,10 @@
 Example of a Django site served by uWSGI and nginx for testing and education purposes.
 
 Implements a simple "Hello, world!", but with a few extras (templates, CSS, 
-images, etc.).
+images, etc.). Follows Django best practices as much as possible.
 
-**Note: although basic security settings are in place, make sure you do your own research 
-on site security! Start with [the Django documentation]
-(https://docs.djangoproject.com/en/1.9/topics/security/), for example.**
+**Note: this example should be considered insecure! Although basic security settings are
+in place, make sure you do your own research on site security! Start with [the Django documentation](https://docs.djangoproject.com/en/1.9/topics/security/), for example.**
 
 Installation steps on Debian 8
 ------------------------------
